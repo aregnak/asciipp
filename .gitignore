@@ -3,6 +3,7 @@
 
 # executable file
 *.out
+asciipp
 
 # build dir
 build/
