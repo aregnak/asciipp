@@ -1,21 +1,29 @@
+#include <opencv2/imgproc.hpp>
 #include <opencv2/opencv.hpp>
-#include <stdio.h>
+#include <iostream>
 
-using namespace cv;
 int main(int argc, char** argv)
 {
-    if (argc != 2) {
-        printf("usage: DisplayImage.out <Image_Path>\n");
+    if (argc != 2) 
+    {
+        std::cerr << "usage: ./asciipp <path-of-image>" << std::endl;
         return -1;
     }
-    Mat image;
-    image = imread(argv[1], 1);
-    if (!image.data) {
-        printf("No image data \n");
+
+    // Read image from command-line
+    cv::Mat image = cv::imread(argv[1], 1);
+
+    if (!image.data) 
+    {
+        std::cerr << "No image data." << std::endl;
         return -1;
     }
-    namedWindow("Display Image", WINDOW_AUTOSIZE);
-    imshow("Display Image", image);
-    waitKey(0);
+
+    cv::Mat gray;
+    cv::cvtColor(image, image, cv::COLOR_RGB2GRAY);
+
+    cv::namedWindow("Display Image", cv::WINDOW_AUTOSIZE);
+    cv::imshow("Display Image", image);
+    cv::waitKey(0);
     return 0;
 }
