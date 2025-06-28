@@ -2,6 +2,8 @@
 #include <opencv2/opencv.hpp>
 #include <iostream>
 
+#include "art.h"
+
 int main(int argc, char** argv)
 {
     if (argc != 2) 
@@ -19,11 +21,10 @@ int main(int argc, char** argv)
         return -1;
     }
 
-    cv::Mat gray;
-    cv::cvtColor(image, image, cv::COLOR_RGB2GRAY);
+    Art art(image, 50);
 
-    cv::namedWindow("Display Image", cv::WINDOW_AUTOSIZE);
-    cv::imshow("Display Image", image);
-    cv::waitKey(0);
+    // debug
+    std::cout << "rows " << image.rows << " cols " << image.cols << std::endl;
+
     return 0;
 }
