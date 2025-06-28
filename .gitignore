@@ -1,0 +1,11 @@
+# compiled files
+*.o 
+
+# executable file
+*.out
+
+# build dir
+build/
+
+# vscode
+.vscode/
