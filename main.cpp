@@ -43,6 +43,11 @@ int main(int argc, char** argv)
             int outputWidth = std::stoi(argv[2]);
             Art art(image, outputWidth);
         }
+        else 
+        {
+            std::cerr << "usage: ./asciipp <path-of-image> [width | default = 100]" << std::endl;
+            return -1;
+        }
     }
     else 
     {
