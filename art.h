@@ -7,8 +7,9 @@
 class Art
 {
 public:
-    Art(cv::Mat image, int outputWidth)
+    Art(cv::Mat image)
     : aspectRatio(0.5) // Play with this for different output sizes
+    , outputWidth(100)
     , outputHeight((image.rows * outputWidth * aspectRatio) / image.cols)
     {
         // Convert to grayscale and resize
@@ -40,8 +41,9 @@ public:
 private:
     std::vector<std::vector<char>> asciiArt;
 
-    std::string chars = "$@#%/~-. ";
+    std::string chars = "@%#*+=-: ";
 
     float aspectRatio;
+    int outputWidth;
     int outputHeight;
 };

@@ -14,17 +14,13 @@ int main(int argc, char** argv)
 
     // Read image from command-line
     cv::Mat image = cv::imread(argv[1], 1);
-
     if (!image.data) 
     {
         std::cerr << "No image data." << std::endl;
         return -1;
     }
 
-    Art art(image, 50);
-
-    // debug
-    std::cout << "rows " << image.rows << " cols " << image.cols << std::endl;
+    Art art(image);
 
     return 0;
 }
