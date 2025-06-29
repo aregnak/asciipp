@@ -4,4 +4,4 @@ project(Asciipp)
 find_package(OpenCV REQUIRED)
 
 add_executable(Asciipp main.cpp)
-target_link_libraries(AsciiArt ${OpenCV_LIBS})
+target_link_libraries(Asciipp ${OpenCV_LIBS})
