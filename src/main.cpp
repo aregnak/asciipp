@@ -4,22 +4,6 @@
 
 #include "art.h"
 
-bool isInt(const std::string& str)
-{
-    try 
-    {
-        size_t pos;
-        unsigned long value = std::stoul(str, &pos);
-        return pos == str.size();
-
-        } catch (const std::invalid_argument& e) {
-            return false;
-        } catch (const std::out_of_range& e) {
-            return false;
-    }
-}
-
-
 int main(int argc, char** argv)
 {
     if (argc < 2 || argc > 3) 
@@ -38,9 +22,9 @@ int main(int argc, char** argv)
 
     if (argc == 3)
     {
-        if (isInt(argv[2]))
+        int outputWidth = std::stoi(argv[2]);
+        if (outputWidth)
         {
-            int outputWidth = std::stoi(argv[2]);
             Art art(image, outputWidth);
         }
         else 
