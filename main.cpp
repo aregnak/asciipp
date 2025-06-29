@@ -22,7 +22,7 @@ bool isInt(const std::string& str)
 
 int main(int argc, char** argv)
 {
-    if (argc >= 2 && argc < 4) 
+    if (argc < 2 || argc > 3) 
     {
         std::cerr << "usage: ./asciipp <path-of-image> [width | default = 100]" << std::endl;
         return -1;
