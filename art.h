@@ -7,14 +7,14 @@
 class Art
 {
 public:
-    Art(cv::Mat image)
-    : aspectRatio(static_cast<float>(image.cols) / image.rows) // Play with this for different output sizes
-    , outputWidth(150)
-    , outputHeight(static_cast<int>(outputWidth / aspectRatio * 0.5f))
+    Art(cv::Mat image, int outputWidth)
+    : _aspectRatio(static_cast<float>(image.cols) / image.rows) // Play with this for different output sizes
+    , _outputWidth(outputWidth)
+    , _outputHeight(static_cast<int>(_outputWidth / _aspectRatio * 0.5f))
     {
         // Convert to grayscale and resize
         cv::cvtColor(image, image, cv::COLOR_RGB2GRAY);
-        cv::resize(image, image, cv::Size(outputWidth, outputHeight));
+        cv::resize(image, image, cv::Size(_outputWidth, _outputHeight));
 
         asciiArt.resize(image.rows , std::vector<char>(image.cols));
 
@@ -49,7 +49,7 @@ private:
     the least brightness in ASCII*/
     std::string chars = " .:-=+*#%@";
 
-    float aspectRatio;
-    int outputWidth;
-    int outputHeight;
+    float _aspectRatio;
+    int _outputWidth;
+    int _outputHeight;
 };
