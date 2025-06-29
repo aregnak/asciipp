@@ -9,12 +9,11 @@ class Art
 public:
     Art(cv::Mat image, int outputWidth)
     : _aspectRatio(static_cast<float>(image.cols) / image.rows)
-    , _outputWidth(outputWidth)
-    , _outputHeight(static_cast<int>(_outputWidth / _aspectRatio * 0.5f))
+    , _outputHeight(static_cast<int>(outputWidth / _aspectRatio * 0.5f))
     {
         // Convert to grayscale and resize
         cv::cvtColor(image, image, cv::COLOR_RGB2GRAY);
-        cv::resize(image, image, cv::Size(_outputWidth, _outputHeight));
+        cv::resize(image, image, cv::Size(outputWidth, _outputHeight));
 
         // Now using resized rows and cols
         for (int y = 0; y < image.rows; ++y) 
@@ -48,6 +47,5 @@ private:
     std::string chars = " .:-=+*#%@";
 
     float _aspectRatio;
-    int _outputWidth;
     int _outputHeight;
 };
