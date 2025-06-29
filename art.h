@@ -8,9 +8,9 @@ class Art
 {
 public:
     Art(cv::Mat image)
-    : aspectRatio(0.5) // Play with this for different output sizes
-    , outputWidth(100)
-    , outputHeight((image.rows * outputWidth * aspectRatio) / image.cols)
+    : aspectRatio(static_cast<float>(image.cols) / image.rows) // Play with this for different output sizes
+    , outputWidth(150)
+    , outputHeight(static_cast<int>(outputWidth / aspectRatio * 0.5f))
     {
         // Convert to grayscale and resize
         cv::cvtColor(image, image, cv::COLOR_RGB2GRAY);
@@ -41,7 +41,13 @@ public:
 private:
     std::vector<std::vector<char>> asciiArt;
 
-    std::string chars = "@%#*+=-: ";
+    /* Uncomment the line below if you want shadows to have
+    the most brightness in ASCII*/
+    // std::string chars = "@%#*+=-:. ";
+
+    /* Uncomment the line below if you want shadows to have
+    the least brightness in ASCII*/
+    std::string chars = " .:-=+*#%@";
 
     float aspectRatio;
     int outputWidth;
