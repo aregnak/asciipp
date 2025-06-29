@@ -8,7 +8,7 @@ class Art
 {
 public:
     Art(cv::Mat image, int outputWidth)
-    : _aspectRatio(static_cast<float>(image.cols) / image.rows) // Play with this for different output sizes
+    : _aspectRatio(static_cast<float>(image.cols) / image.rows)
     , _outputWidth(outputWidth)
     , _outputHeight(static_cast<int>(_outputWidth / _aspectRatio * 0.5f))
     {
@@ -21,8 +21,11 @@ public:
         {
             for (int x = 0; x < image.cols; ++x) 
             {
+                // Check each pixel's brightness
                 uchar pixel = image.at<uchar>(y, x); // 0-255
                 int index = static_cast<int>((pixel / 255.0) * (chars.size()));
+
+                // Newline if on new column
                 if (x == 0)
                 {
                     std::cout << std::endl << chars[index];
