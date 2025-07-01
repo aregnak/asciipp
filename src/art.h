@@ -27,12 +27,9 @@ public:
                 // Newline if on new column
                 if (x == 0)
                 {
-                    std::cout << std::endl << chars[index];
+                    std::cout << std::endl;
                 }
-                else 
-                {
-                    std::cout << chars[index];
-                }
+                std::cout << chars[index];
             }
         }
     }
