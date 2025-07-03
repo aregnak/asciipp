@@ -9,7 +9,7 @@ int main(int argc, char** argv)
 {
     try 
     {
-        if (argc < 2 || argc > 3) 
+        if (argc < 2) 
         {
             throw std::runtime_error("usage: ./asciipp <path-of-image> [width | default = 100]");
         }
@@ -24,15 +24,32 @@ int main(int argc, char** argv)
         
         // Default output width
         int outputWidth = 100;
-        if (argc == 3)
+
+        // Option checking
+        for(int i = 2; i < argc; ++i)
         {
-            if (!std::stoi(argv[2]))
+            // Check for width
+            if (argv[i] == std::string_view("-w"))
             {
-                throw std::runtime_error("Error: Width must be a positive integer.");
+                int widthBuffer = std::stoi(argv[i+1]);
+                if (widthBuffer < 1)
+                {
+                    throw std::runtime_error("Error: Width must be a positive integer.");
+                }
+                outputWidth = widthBuffer;
+                
+                i++;
             }
 
-            outputWidth = std::stoi(argv[2]);
+            // Check for inverted characterset
+            else if (argv[i] == std::string_view("-i"))
+            {
+                std::cerr << "inverted"; 
+            }
+
+            else if 
         }
+
         Art art(image, outputWidth);
 
         return 0;
