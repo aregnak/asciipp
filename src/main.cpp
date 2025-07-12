@@ -28,26 +28,34 @@ int main(int argc, char** argv)
         // Option checking
         for(int i = 2; i < argc; ++i)
         {
-            // Check for width
-            if (argv[i] == std::string_view("-w"))
+            std::string argvStr = argv[i];
+
+            if (argvStr.find('-') != std::string::npos)
             {
-                int widthBuffer = std::stoi(argv[i+1]);
-                if (widthBuffer < 1)
+                // Check for width
+                if (argvStr == std::string_view("-w"))
                 {
-                    throw std::runtime_error("Error: Width must be a positive integer.");
+                    int widthBuffer = std::stoi(argv[i+1]);
+                    if (widthBuffer < 1)
+                    {
+                        throw std::runtime_error("Error: Width must be a positive integer.");
+                    }
+                    outputWidth = widthBuffer;
+                    
+                    i++;
                 }
-                outputWidth = widthBuffer;
-                
-                i++;
-            }
 
-            // Check for inverted characterset
-            else if (argv[i] == std::string_view("-i"))
+                // Check for inverted characterset
+                else if (argvStr == std::string_view("-i"))
+                {
+                    std::cerr << "inverted"; 
+                }
+            }
+            else
             {
-                std::cerr << "inverted"; 
+                throw std::runtime_error("Bad argument.");
             }
 
-            else if 
         }
 
         Art art(image, outputWidth);
