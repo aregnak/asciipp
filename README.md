@@ -5,7 +5,11 @@
 This CLI program will create ASCII art from a given image.
 
 ### Usage
-`./asciipp <path-of-image> [width | default = 100]`
+``` bash
+./asciipp <path-of-image>
+  -w <width>   Output width, default is 100
+  -i           Invert characterset
+  ```
 
 There are a few sample images in the Samples folder for quick testing.
 
