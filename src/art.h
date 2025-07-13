@@ -40,13 +40,7 @@ public:
     }
 
 private:
-    /* Uncomment the line below if you want shadows to have
-    the most brightness in ASCII*/
     std::string chars = "@%#*+=-:. ";
-
-    /* Uncomment the line below if you want shadows to have
-    the least brightness in ASCII*/
-    // std::string chars = " .:-=+*#%@";
 
     float _aspectRatio;
     int _outputHeight;
