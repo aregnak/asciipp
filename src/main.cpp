@@ -5,13 +5,15 @@
 
 #include "art.h"
 
+std::string helpMessage = "Usage: ./asciipp <path-of-image>\n  -w <width>   Output width, default is 100\n  -i           Invert characterset";
+
 int main(int argc, char** argv)
 {
     try 
     {
         if (argc < 2) 
         {
-            throw std::runtime_error("usage: ./asciipp <path-of-image> [width | default = 100]");
+            throw std::runtime_error(helpMessage);
         }
 
         // Read image from command-line
