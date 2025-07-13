@@ -22,8 +22,9 @@ int main(int argc, char** argv)
             throw std::runtime_error("Error: No image data.");
         }
         
-        // Default output width
+        // Defaults 
         int outputWidth = 100;
+        bool inverted = false;
 
         // Option checking
         for(int i = 2; i < argc; ++i)
@@ -48,7 +49,7 @@ int main(int argc, char** argv)
                 // Check for inverted characterset
                 else if (argvStr == std::string_view("-i"))
                 {
-                    std::cerr << "inverted"; 
+                   inverted = true; 
                 }
             }
             else
@@ -58,7 +59,7 @@ int main(int argc, char** argv)
 
         }
 
-        Art art(image, outputWidth);
+        Art art(image, outputWidth, inverted);
 
         return 0;
     }

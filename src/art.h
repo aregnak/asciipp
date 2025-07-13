@@ -7,13 +7,18 @@
 class Art
 {
 public:
-    Art(cv::Mat image, int outputWidth)
+    Art(cv::Mat image, int outputWidth, bool inverted)
     : _aspectRatio(static_cast<float>(image.cols) / image.rows)
     , _outputHeight(static_cast<int>(outputWidth / _aspectRatio * 0.5f))
     {
         // Convert to grayscale and resize
         cv::cvtColor(image, image, cv::COLOR_RGB2GRAY);
         cv::resize(image, image, cv::Size(outputWidth, _outputHeight));
+
+        if (inverted)
+        {
+            chars = " .:-=+*#%@";
+        }
 
         // Now using resized rows and cols
         for (int y = 0; y < image.rows; ++y) 
